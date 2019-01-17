@@ -79,16 +79,16 @@ vnoremap <script> <Plug>autohighlight_toggle :<C-U>AutohighlightToggle<CR>
 
 
 " Watchers for the configuration variables -------------------------------------
+if has('nvim')
+    silent! call dictwatcherdel(g:, 'autohighlight_enabled', 'autohighlight#changed_enabled')
+    call dictwatcheradd(g:, 'autohighlight_enabled', 'autohighlight#changed_enabled')
 
-silent! call dictwatcherdel(g:, 'autohighlight_enabled', 'autohighlight#changed_enabled')
-call dictwatcheradd(g:, 'autohighlight_enabled', 'autohighlight#changed_enabled')
+    silent! call dictwatcherdel(g:autohighlight_highlight, '*', 'autohighlight#changed_highlight')
+    call dictwatcheradd(g:autohighlight_highlight, '*', 'autohighlight#changed_highlight')
 
-silent! call dictwatcherdel(g:autohighlight_highlight, '*', 'autohighlight#changed_highlight')
-call dictwatcheradd(g:autohighlight_highlight, '*', 'autohighlight#changed_highlight')
-
-silent! call dictwatcherdel(g:, 'autohighlight_event', 'autohighlight#changed_event')
-call dictwatcheradd(g:, 'autohighlight_event', 'autohighlight#changed_event')
-
+    silent! call dictwatcherdel(g:, 'autohighlight_event', 'autohighlight#changed_event')
+    call dictwatcheradd(g:, 'autohighlight_event', 'autohighlight#changed_event')
+endif
 
 
 if g:autohighlight_enabled
