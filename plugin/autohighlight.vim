@@ -22,7 +22,8 @@ endif
 " g:autohighlight_highlight:
 " Define the colours that are used to highlight the cursor word
 if !exists('g:autohighlight_highlight')
-	let g:autohighlight_highlight = { 'ctermfg':'green', 'ctermbg':'NONE', 'cterm':'NONE', 'guifg':'#ff0000', 'guibg':'NONE', 'gui':'NONE' }
+	"let g:autohighlight_highlight = { 'ctermfg':'black', 'ctermbg':'darkgreen', 'cterm':'NONE', 'guifg':'#ff0000', 'guibg':'NONE', 'gui':'NONE' }
+	let g:autohighlight_highlight = { 'ctermfg':'white', 'ctermbg':'cyan', 'cterm':'NONE', 'guifg':'#ff0000', 'guibg':'NONE', 'gui':'NONE' }
 endif
 
 " g:autohighlight_priority:
@@ -38,7 +39,9 @@ endif
 "  - Or "CursorHold" to update |updatetime| after the last cursor movement.
 " Use "setl updatetime=100" to adjust the wait after the last cursor movement.
 if !exists('g:autohighlight_event')
-	let g:autohighlight_event = 'CursorMoved'
+	"let g:autohighlight_event = 'CursorMoved'
+	let g:autohighlight_event = 'CursorHold'
+    setl updatetime=700
 endif
 
 
@@ -89,6 +92,7 @@ if has('nvim')
     silent! call dictwatcherdel(g:, 'autohighlight_event', 'autohighlight#changed_event')
     call dictwatcheradd(g:, 'autohighlight_event', 'autohighlight#changed_event')
 endif
+
 
 
 if g:autohighlight_enabled
